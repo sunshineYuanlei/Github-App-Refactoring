@@ -1,0 +1,44 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    defaultConfig {
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'com.android.support:appcompat-v7:28.0.0'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    implementation "com.facebook.react:react-native:+"  // From node_modules
+    // 友盟统计SDK
+    api  'com.umeng.umsdk:common:9.4.4'// 必选 - 基础组件库依赖
+    api  'com.umeng.umsdk:asms:1.4.1'// 必选
+    api 'com.umeng.umsdk:apm:1.5.2' // 错误分析升级为独立SDK，看crash数据请一定集成，可选
+
+    api  'com.umeng.umsdk:share-core:7.1.7'//分享核心库，必选
+    api  'com.umeng.umsdk:share-board:7.1.7'//分享面板功能，可选
+    implementation  'com.umeng.umsdk:share-wx:7.1.7'//微信完整版
+    implementation 'com.tencent.mm.opensdk:wechat-sdk-android-without-mta:6.8.0'//微信官方依赖库，必选
+    implementation  'com.umeng.umsdk:share-qq:7.1.7'//QQ完整版
+    implementation files('libs/open_sdk_3.5.7.4_r1bc9afe_lite.jar') //QQ官方依赖库，必选，可从课程源码中下载 @https://git.imooc.com/coding-304
+    implementation 'com.squareup.okhttp3:okhttp:3.14.9'//QQ官方sdk 3.53及之后版本需要集成okhttp3.x，必选
+    implementation  'com.umeng.umsdk:share-sina:7.1.7'//新浪微博完整版
+    implementation 'io.github.sinaweibosdk:core:11.11.1@aar'//新浪微博官方SDK依赖库，必选
+}

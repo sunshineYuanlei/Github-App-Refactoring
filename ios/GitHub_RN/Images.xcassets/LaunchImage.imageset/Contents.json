@@ -1,0 +1,23 @@
+{
+  "images" : [
+    {
+      "filename" : "LaunchScreen750x1134.png",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "filename" : "LaunchScreen1125x2436.png",
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "filename" : "LaunchScreen1242x2688.png",
+      "idiom" : "universal",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

@@ -1,0 +1,54 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="org.devio.trackshare">
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <queries>
+        <package android:name="com.tencent.mm" />            // 指定微信包名
+        <package android:name="com.tencent.mobileqq" />    //指定qq包名
+        <package android:name="com.sina.weibo" />             //指定微博包名
+        <package android:name="com.tencent.wework" />      //指定企业微信包名
+        <package android:name="com.qzone" />                   //指定QQ空间包名
+        <package android:name="com.alibaba.android.rimet" /> // 指定钉钉包名
+        <package android:name="com.eg.android.AlipayGphone" /> // 指定支付宝包名
+        <package android:name="com.instagram.android" />         // 指定instagram包名
+    </queries>
+    <application>
+
+        <!--weixin callback-->
+        <activity
+            android:name=".wxapi.WXEntryActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <!--qq callback-->
+        <!-- add android:exported="true" to fix Apps targeting Android 12 and higher are required to specify an explicit value for `android:exported` whe-->
+        <activity
+            android:name="com.tencent.tauth.AuthActivity"
+            android:launchMode="singleTask"
+            android:noHistory="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="tencent1105745872" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.tencent.connect.common.AssistActivity"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <!--umeng：-->
+        <!--分享编辑页：-->
+        <activity
+            android:name="com.umeng.socialize.editorpage.ShareActivity"
+            android:excludeFromRecents="true"
+            android:theme="@style/Theme.UMDefault" />
+    </application>
+
+</manifest>
